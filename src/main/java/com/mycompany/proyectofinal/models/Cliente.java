@@ -25,8 +25,20 @@ public class Cliente {
     private Objetivo objetivo;
 
     private Cliente() {
-    
     }
+
+    public Cliente(String nombre, String dni, String contraseña, LocalDate fecha_nacimiento,float peso, float altura) {
+        this.nombre = nombre;
+        this.dni = dni;
+        this.contraseña = contraseña;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.peso = peso;
+        this.altura = altura;
+        CalculaIMC();
+        CalcularObjetivo();
+    }
+    
+    
 
     private void CalculaIMC(){
         float nume=0;
@@ -57,6 +69,94 @@ public class Cliente {
                 break;
         }
     }
-    
-    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public LocalDate getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public float getPeso() {
+        return peso;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+
+    public float getAltura() {
+        return altura;
+    }
+
+    public void setAltura(float altura) {
+        this.altura = altura;
+    }
+
+    public IMC getIndice_masa() {
+        return indice_masa;
+    }
+
+    public void setIndice_masa(IMC indice_masa) {
+        this.indice_masa = indice_masa;
+    }
+
+    public Objetivo getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean igual=false;
+        
+        if(obj!=null){
+            if(this==obj){
+                igual=true;
+            }else{
+                if(obj instanceof Cliente){
+                    Cliente n= (Cliente) obj;
+                    igual=this.getDni().equals(n.getContraseña());
+                }
+            }
+        }
+        return igual;
+    }
+
 }

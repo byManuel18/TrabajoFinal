@@ -1,5 +1,6 @@
 package com.mycompany.proyectofinal;
 
+import com.mycompany.proyectofinal.enums.Escenas;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
@@ -17,7 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML(Escenas.PRIMARY.getUrl()), 640, 480);
+        //stage.getIcons().add(new Image("file:icon.png"));
         stage.setScene(scene);
         stage.show();
     }

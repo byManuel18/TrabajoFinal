@@ -11,8 +11,6 @@ import javafx.stage.FileChooser;
 
 public class PrimaryController {
     @FXML
-    private Button pr;
-    @FXML
     private ImageView img;
     
     @FXML
@@ -30,10 +28,6 @@ public class PrimaryController {
         }
     }
     
-    @FXML 
-    private void Guarda(ActionEvent event){
-        
-    }
 
     @FXML
     private void switchToSecondary() throws IOException {

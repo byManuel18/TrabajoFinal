@@ -12,5 +12,5 @@ package com.mycompany.proyectofinal.enums;
 public enum Objetivo {
     Adelgazar,
     Engordar,
-    Mantener
+    Mantener;
 }

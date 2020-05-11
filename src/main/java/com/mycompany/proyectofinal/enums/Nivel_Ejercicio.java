@@ -9,9 +9,12 @@ package com.mycompany.proyectofinal.enums;
  *
  * @author Manueh
  */
-public enum IMC {
-    BAJO_PESO,
-    NORMAL,
-    SOBREPESO,
-    OBESO;
+public enum Nivel_Ejercicio {
+    SEDENTARIO,
+    LIGERAMENTE_ACTIVO,
+    MODERADAMENTE_ACTIVO,
+    MUY_ACTIVO,
+    HIPERACTIVO;
+    
+    
 }

@@ -9,9 +9,7 @@ package com.mycompany.proyectofinal.enums;
  *
  * @author Manueh
  */
-public enum IMC {
-    BAJO_PESO,
-    NORMAL,
-    SOBREPESO,
-    OBESO;
+public enum Sexo {
+    M,
+    H;
 }

@@ -6,7 +6,9 @@
 package com.mycompany.proyectofinal.models;
 
 import com.mycompany.proyectofinal.enums.IMC;
+import com.mycompany.proyectofinal.enums.Nivel_Ejercicio;
 import com.mycompany.proyectofinal.enums.Objetivo;
+import com.mycompany.proyectofinal.enums.Sexo;
 import java.time.LocalDate;
 
 /**
@@ -23,17 +25,22 @@ public class Cliente {
     private float altura;
     private IMC indice_masa;
     private Objetivo objetivo;
+    private Nivel_Ejercicio nivel_ejer;
+    private float calorias_necesarias;
+    private Sexo s;
 
     private Cliente() {
     }
 
-    public Cliente(String nombre, String dni, String contraseña, LocalDate fecha_nacimiento,float peso, float altura) {
+    public Cliente(String nombre, String dni, String contraseña, LocalDate fecha_nacimiento,Sexo s,float peso, float altura,Nivel_Ejercicio nivel_ejer) {
         this.nombre = nombre;
         this.dni = dni;
         this.contraseña = contraseña;
         this.fecha_nacimiento = fecha_nacimiento;
         this.peso = peso;
         this.altura = altura;
+        this.nivel_ejer=nivel_ejer;
+        this.s=s;
         CalculaIMC();
         CalcularObjetivo();
     }
@@ -69,6 +76,11 @@ public class Cliente {
                 break;
         }
     }
+    
+    private void CalcularCaloriasNecesarias(){
+        float metabolismo_basal=(10*this.peso);
+    }
+    
 
     public String getNombre() {
         return nombre;
@@ -142,6 +154,30 @@ public class Cliente {
         this.objetivo = objetivo;
     }
 
+    public Nivel_Ejercicio getNivel_ejer() {
+        return nivel_ejer;
+    }
+
+    public void setNivel_ejer(Nivel_Ejercicio nivel_ejer) {
+        this.nivel_ejer = nivel_ejer;
+    }
+
+    public float getCalorias_necesarias() {
+        return calorias_necesarias;
+    }
+
+    public void setCalorias_necesarias(float calorias_necesarias) {
+        this.calorias_necesarias = calorias_necesarias;
+    }
+
+    public Sexo getS() {
+        return s;
+    }
+
+    public void setS(Sexo s) {
+        this.s = s;
+    }
+    
     @Override
     public boolean equals(Object obj) {
         boolean igual=false;

@@ -9,18 +9,17 @@ package com.mycompany.proyectofinal.enums;
  *
  * @author Manueh
  */
-public enum Escenas {
-    ROOT("view/root"),
-    PRIMARY("view/primary"),
-    SECONDARY("view/secondary");
+public enum ConnectionsType {
 
-    private String url;
+    MYSQL("mySQL"),
+    H2("H2");
+    
+    private String type;
 
-    Escenas(String fxmlFile) {
-        this.url = fxmlFile;
+    private ConnectionsType(String type) {
+        this.type=type;
     }
-
-    public String getUrl() {
-        return url;
-    }
+    public String getType(){
+        return this.type;
+    } 
 }

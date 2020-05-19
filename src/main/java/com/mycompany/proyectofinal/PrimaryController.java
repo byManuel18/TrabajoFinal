@@ -10,25 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 public class PrimaryController {
-    @FXML
-    private ImageView img;
     
-    @FXML
-    private void CargarImagen(ActionEvent event){
-        FileChooser flich=new FileChooser();
-        flich.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images","*.*"),
-                new FileChooser.ExtensionFilter("JPG","*.jpg"),
-                new FileChooser.ExtensionFilter("PNG","*.png"));
-        flich.setTitle("ELIGE UNA FOTO");
-        
-        File ventana=flich.showOpenDialog(null);
-        if(ventana!=null){
-            Image im = new Image("file:"+ventana.getAbsolutePath());
-            img.setImage(im);
-        }
-    }
-    
-
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");

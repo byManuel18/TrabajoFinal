@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -20,10 +19,7 @@ import javafx.stage.FileChooser;
  *
  * @author Manueh
  */
-public class ControladorPrueba implements Initializable{
-    
-    @FXML
-    private Button pr;
+public class ControladorSecondary implements Initializable{
     @FXML
     private ImageView img;
     
@@ -41,15 +37,10 @@ public class ControladorPrueba implements Initializable{
             img.setImage(im);
         }
     }
-    
-    @FXML 
-    private void Guarda(ActionEvent event){
-        
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

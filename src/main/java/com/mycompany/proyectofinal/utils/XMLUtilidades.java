@@ -8,10 +8,10 @@ package com.mycompany.proyectofinal.utils;
 import com.mycompany.proyectofinal.models.Canal;
 import com.mycompany.proyectofinal.models.ConexionWrapper;
 import java.io.File;
-import javafx.scene.control.Dialog;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -35,5 +35,21 @@ public class XMLUtilidades {
             System.out.println("NO VA :((");
         }
         
+    }
+    
+    public static Canal CargarCanal(){
+        Canal c=null;
+        File f=new File(file);
+        if(f.canRead()){
+            try{
+                JAXBContext context=JAXBContext.newInstance(ConexionWrapper.class);
+                Unmarshaller um = context.createUnmarshaller();
+                ConexionWrapper wrapper = (ConexionWrapper) um.unmarshal(f);
+                c=(wrapper.getCanal());
+            }catch(JAXBException ex){
+                ex.printStackTrace();
+            }
+        }
+        return c;
     }
 }

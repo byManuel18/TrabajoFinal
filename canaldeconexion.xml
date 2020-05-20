@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<conns>
+    <conn>
+        <bd>trabajofinal</bd>
+        <contraseña></contraseña>
+        <direccion>localhost</direccion>
+        <puerto>3306</puerto>
+        <usuario>root</usuario>
+    </conn>
+</conns>

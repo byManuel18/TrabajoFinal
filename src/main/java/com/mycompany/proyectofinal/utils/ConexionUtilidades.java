@@ -21,7 +21,7 @@ public class ConexionUtilidades {
             return null;
         }
         Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://"+c.getDireccion()+":"+c.getPuerto()+"/"+c.getBd()+c.getZona_horaria(),c.getUsuario(),c.getContraseña());
+        conn=DriverManager.getConnection("jdbc:mysql://"+c.getDireccion()+":"+c.getPuerto()+"/"+c.getBd()+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",c.getUsuario(),c.getContraseña());
         
         return conn;
     }

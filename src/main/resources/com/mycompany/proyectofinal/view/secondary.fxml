@@ -29,6 +29,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Nombre" />
@@ -37,19 +38,21 @@
             <Label text="Fecha nacimiento" GridPane.rowIndex="3" />
             <Label text="Peso" GridPane.rowIndex="4" />
             <Label text="Altura" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker prefHeight="31.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="name" GridPane.columnIndex="1" />
+            <TextField fx:id="dni" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="contrase" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="fecha_nacimiento" prefHeight="31.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="peso" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="altura" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Sexo" GridPane.rowIndex="6" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="sexo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="Nivel de ejercicio" GridPane.rowIndex="7" />
+            <ChoiceBox fx:id="ni_ejer" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <HBox alignment="CENTER" layoutX="219.0" layoutY="355.0" prefHeight="31.0" prefWidth="149.0" spacing="30.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" text="Crear" />
+            <Button mnemonicParsing="false" onAction="#Add" text="Crear" />
             <Button mnemonicParsing="false" onAction="#Volver" text="Volver" />
          </children>
       </HBox>

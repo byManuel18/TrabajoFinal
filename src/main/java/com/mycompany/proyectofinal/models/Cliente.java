@@ -20,7 +20,7 @@ public class Cliente {
 
     private String nombre;
     private String dni;
-    private String contraseña;
+    private String contrase;
     private LocalDate fecha_nacimiento;
     private byte[] foto;
     private float peso;
@@ -37,7 +37,7 @@ public class Cliente {
     public Cliente(String nombre, String dni, String contraseña, LocalDate fecha_nacimiento, Sexo s, float peso, float altura, Nivel_Ejercicio nivel_ejer) {
         this.nombre = nombre;
         this.dni = dni;
-        this.contraseña = contraseña;
+        this.contrase = contraseña;
         this.fecha_nacimiento = fecha_nacimiento;
         this.peso = peso;
         this.altura = altura;
@@ -79,8 +79,8 @@ public class Cliente {
     }
 
     private void CalcularCaloriasNecesarias() {
-        int edad = fecha_nacimiento.compareTo(LocalDate.now());
-        float metabolismo_basal = (10 * this.peso) + (6.25f * this.altura) - (edad * 5);
+        int edad = LocalDate.now().compareTo(fecha_nacimiento);
+        float metabolismo_basal = (10 * this.peso) + (6.25f * (this.altura*100)) - (edad * 5);
 
         switch (s) {
             case M:
@@ -141,11 +141,11 @@ public class Cliente {
     }
 
     public String getContraseña() {
-        return contraseña;
+        return contrase;
     }
 
     public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+        this.contrase = contraseña;
     }
 
     public LocalDate getFecha_nacimiento() {
@@ -236,5 +236,11 @@ public class Cliente {
         }
         return igual;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "nombre=" + nombre + ", dni=" + dni + ", contrasena=" + contrase + ", fecha_nacimiento=" + fecha_nacimiento + ", foto=" + foto + ", peso=" + peso + ", altura=" + altura + ", indice_masa=" + indice_masa + ", objetivo=" + objetivo + ", nivel_ejer=" + nivel_ejer + ", calorias_necesarias=" + calorias_necesarias + ", s=" + s + '}';
+    }
+    
 
 }

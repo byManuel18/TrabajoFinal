@@ -24,6 +24,7 @@ public class Producto {
     private byte[] foto;
     
     private Producto() {
+        this(-1,"","",0,0,0,00,0,0,0,0);
     }
 
     public Producto(int id, String nombre, String marca, float calorias, float grasas, float grasas_saturadas, float hidratos, float azucaar, float proteinas, float sodio, float fibra) {

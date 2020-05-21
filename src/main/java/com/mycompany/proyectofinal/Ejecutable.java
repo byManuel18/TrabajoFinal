@@ -5,6 +5,8 @@
  */
 package com.mycompany.proyectofinal;
 
+import com.mycompany.proyectofinal.utils.ConexionUtilidades;
+
 /**
  *
  * @author Manueh
@@ -12,5 +14,7 @@ package com.mycompany.proyectofinal;
 public class Ejecutable {
     public static void main(String[] args) {
         App.main(args);
+        ConexionUtilidades.cerrarConec();
+        
     }
 }

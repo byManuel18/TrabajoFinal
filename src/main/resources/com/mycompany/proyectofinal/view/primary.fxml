@@ -25,13 +25,13 @@
          <children>
             <Label text="DNI" />
             <Label text="Contraseña" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="dni" GridPane.columnIndex="1" />
+            <PasswordField fx:id="contrase" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <HBox layoutX="239.0" layoutY="233.0" prefHeight="31.0" prefWidth="169.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" text="Iniciar" />
+            <Button mnemonicParsing="false" onAction="#iniciarlobby" text="Iniciar" />
             <Button mnemonicParsing="false" onAction="#switchToSecondary" text="Registrar" />
          </children>
       </HBox>

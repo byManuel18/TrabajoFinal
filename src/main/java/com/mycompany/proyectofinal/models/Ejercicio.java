@@ -21,6 +21,7 @@ public class Ejercicio {
     private Grupo_Muscular musculo;    
    
     public Ejercicio() {
+        this("",0,0,"",Grupo_Muscular.PECHO);
     }
 
     public Ejercicio(String nombre, int repeticiones, int series, String descripcion, Grupo_Muscular musculo) {

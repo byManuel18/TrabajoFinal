@@ -6,18 +6,15 @@
 package com.mycompany.proyectofinal.controladores;
 
 import com.mycompany.proyectofinal.App;
+import com.mycompany.proyectofinal.DAOS.ClientesDAO;
 import com.mycompany.proyectofinal.enums.Escenas;
 import com.mycompany.proyectofinal.enums.Nivel_Ejercicio;
 import com.mycompany.proyectofinal.enums.Sexo;
 import com.mycompany.proyectofinal.models.Cliente;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
+import com.mycompany.proyectofinal.utils.UtilidadesGenerales;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,13 +26,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import javax.imageio.ImageIO;
 
 /**
  *
  * @author Manueh
  */
-public class ControladorSecondary implements Initializable {
+public class ControladorSecondary extends General{
 
     @FXML
     private ImageView img;
@@ -82,27 +78,31 @@ public class ControladorSecondary implements Initializable {
         Image nue = img.getImage();
 
         if (nue != null) {
-            String ruta = nue.getUrl().substring(5);
-            BufferedImage bfi = ImageIO.read(new File(ruta));
-            WritableRaster raster = bfi.getRaster();
-            DataBufferByte data = (DataBufferByte) raster.getDataBuffer();
-            imagenenbits = data.getData();
+            imagenenbits = UtilidadesGenerales.pasarimagenabites(nue);
         }
         try {
             float altura = Float.parseFloat(this.altura.getText());
             float peso = Float.parseFloat(this.peso.getText());
-            Sexo s=this.sexo.getValue();
-            Nivel_Ejercicio n=this.ni_ejer.getValue();
-            Cliente nuevo=new Cliente(name.getText(),dni.getText(),contrase.getText(),fecha_nacimiento.getValue(),s,peso,altura,n);
-            if(imagenenbits!=null){
-                nuevo.setFoto(imagenenbits);
+            Sexo s = this.sexo.getValue();
+            Nivel_Ejercicio n = this.ni_ejer.getValue();
+            if (!UtilidadesGenerales.validarDNI(dni.getText())) {
+                super.muestraerror("Error al validar dni", "", "Introduzca un dni válido");
+            } else {
+                Cliente nu = new Cliente(name.getText(), dni.getText(), contrase.getText(), fecha_nacimiento.getValue(), s, peso, altura, n);
+                if (imagenenbits != null) {
+                    nu.setFoto(imagenenbits);
+                }
+                System.out.println(nu);
+                ClientesDAO nuevo = new ClientesDAO(nu);
+                nuevo.save();
+                super.muestrinformacion("Usuario creado correctamente!!", "Disfrute de la aplicación", "");
+                App.setRoot(Escenas.PRIMARY.getUrl());
             }
-            System.out.println(nuevo);
+
         } catch (Exception ex) {
-            System.out.println("No dejes campos vacíos");
+            super.muestraerror("Error al introducir datos", "Compruebe que no hay campos en blanco y sean válidos", "");
         }
 
-       
     }
 
     @Override
@@ -112,11 +112,14 @@ public class ControladorSecondary implements Initializable {
                 sexo.getItems().add(s);
             }
         }
-        if(ni_ejer!=null){
+        if (ni_ejer != null) {
             for (Nivel_Ejercicio n : Nivel_Ejercicio.values()) {
                 ni_ejer.getItems().add(n);
             }
         }
     }
+    
+    
+    
 
 }

@@ -12,7 +12,8 @@ package com.mycompany.proyectofinal.enums;
 public enum Escenas {
     ROOT("view/root"),
     PRIMARY("view/primary"),
-    SECONDARY("view/secondary");
+    SECONDARY("view/secondary"),
+    LOBBY("view/lobby");
 
     private String url;
 

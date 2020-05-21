@@ -18,20 +18,21 @@ import java.time.LocalDate;
  */
 public class Cliente {
 
-    private String nombre;
-    private String dni;
-    private String contrase;
-    private LocalDate fecha_nacimiento;
-    private byte[] foto;
-    private float peso;
-    private float altura;
-    private IMC indice_masa;
-    private Objetivo objetivo;
-    private Nivel_Ejercicio nivel_ejer;
-    private float calorias_necesarias;
-    private Sexo s;
+    protected String nombre;
+    protected String dni;
+    protected String contrase;
+    protected LocalDate fecha_nacimiento;
+    protected byte[] foto;
+    protected float peso;
+    protected float altura;
+    protected IMC indice_masa;
+    protected Objetivo objetivo;
+    protected Nivel_Ejercicio nivel_ejer;
+    protected float calorias_necesarias;
+    protected Sexo s;
 
-    private Cliente() {
+    public Cliente() {
+        this("","","",LocalDate.now(),Sexo.M,1,1,Nivel_Ejercicio.SEDENTARIO);
     }
 
     public Cliente(String nombre, String dni, String contraseña, LocalDate fecha_nacimiento, Sexo s, float peso, float altura, Nivel_Ejercicio nivel_ejer) {
@@ -49,14 +50,14 @@ public class Cliente {
     }
 
     private void CalculaIMC() {
-        float nume = 0;
+        float nume = (this.peso/(float)Math.pow(this.altura, 2));
         if (nume < 18.5) {
             this.indice_masa = IMC.BAJO_PESO;
         } else if (nume >= 18.5 && nume <= 24.9) {
             this.indice_masa = IMC.NORMAL;
         } else if (nume >= 25 && nume <= 29.9) {
             this.indice_masa = IMC.OBESO;
-        } else {
+        } else{
             this.indice_masa = IMC.SOBREPESO;
         }
     }

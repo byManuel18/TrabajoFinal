@@ -10,8 +10,11 @@ package com.mycompany.proyectofinal.enums;
  * @author Manueh
  */
 public enum Sentencias {
-    VERTODOSLOSCLIENTES("SELECT * FROM clientes");
-    
+    VERTODOSLOSCLIENTES("SELECT * FROM cliente"),
+    EXISTECLIENTE("SELECT * FROM cliente WHERE Dni=?"),
+    SELECLIENTECONCRETO("SELECT * FROM cliente WHERE dni= ? and contaseña"),
+    ISEERTARCLIENTES("INSERT INTO cliente (nombre,dni,Fecha_Nacimiento,Contraseña,Foto,Altura,Peso,IMC,OBJETIVO,Nivel_Ejercicio,Calorias_Necesarias,Sexo) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+    ;
     private String senten;
 
     private Sentencias(String senten) {

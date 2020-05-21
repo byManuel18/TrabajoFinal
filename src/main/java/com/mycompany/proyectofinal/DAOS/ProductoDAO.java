@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.proyectofinal.models;
+package com.mycompany.proyectofinal.DAOS;
 
 /**
  *
  * @author Manueh
  */
-public class ClientesDAO {
+public class ProductoDAO {
     
 }

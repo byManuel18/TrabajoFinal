@@ -18,6 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -46,6 +47,19 @@ public class UtilidadesGenerales {
 
     public static Image pasardebitsaimage(byte[] bi) {
         return new Image(new ByteArrayInputStream(bi));
+    }
+    public static ImageIcon pasardebitsaimageImageIcon(byte[] bi) {
+        ImageIcon imgi=null;
+        try {
+            BufferedImage image = null;
+            InputStream in = new ByteArrayInputStream(bi);
+            image = ImageIO.read(in);
+            imgi = new ImageIcon(image.getScaledInstance(60, 60, 0));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(UtilidadesGenerales.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return imgi;
     }
 
     /**

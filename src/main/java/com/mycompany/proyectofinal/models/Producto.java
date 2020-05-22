@@ -10,24 +10,24 @@ package com.mycompany.proyectofinal.models;
  * @author Manueh
  */
 public class Producto {
-    private int id;
-    private String nombre;
-    private String marca;
-    private float calorias;
-    private float grasas;
-    private float grasas_saturadas;
-    private float hidratos;
-    private float azucaar;
-    private float proteinas;
-    private float sodio;
-    private float fibra;
-    private byte[] foto;
+    protected int id;
+    protected String nombre;
+    protected String marca;
+    protected float calorias;
+    protected float grasas;
+    protected float grasas_saturadas;
+    protected float hidratos;
+    protected float azucaar;
+    protected float proteinas;
+    protected float sodio;
+    protected float fibra;
+    protected byte[] foto;
     
-    private Producto() {
-        this(-1,"","",0,0,0,00,0,0,0,0);
+    public Producto() {
+        this(-1,"","",0,0,0,00,0,0,0,0,new byte[0]);
     }
 
-    public Producto(int id, String nombre, String marca, float calorias, float grasas, float grasas_saturadas, float hidratos, float azucaar, float proteinas, float sodio, float fibra) {
+    public Producto(int id, String nombre, String marca, float calorias, float grasas, float grasas_saturadas, float hidratos, float azucaar, float proteinas, float sodio, float fibra,byte[] foto) {
         this.id = id;
         this.nombre = nombre;
         this.marca = marca;
@@ -39,6 +39,7 @@ public class Producto {
         this.proteinas = proteinas;
         this.sodio = sodio;
         this.fibra = fibra;
+        this.foto=this.foto;
     }
 
     public String getNombre() {
@@ -156,4 +157,10 @@ public class Producto {
         }
         return igual;
     } 
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", marca=" + marca + ", calorias=" + calorias + ", grasas=" + grasas + ", grasas_saturadas=" + grasas_saturadas + ", hidratos=" + hidratos + ", azucaar=" + azucaar + ", proteinas=" + proteinas + ", sodio=" + sodio + ", fibra=" + fibra + ", foto=" + foto + '}';
+    }
+    
 }

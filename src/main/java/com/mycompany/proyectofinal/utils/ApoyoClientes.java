@@ -6,6 +6,7 @@
 package com.mycompany.proyectofinal.utils;
 
 import com.mycompany.proyectofinal.DAOS.ClientesDAO;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,6 +14,7 @@ import com.mycompany.proyectofinal.DAOS.ClientesDAO;
  */
 public class ApoyoClientes {
     private static ClientesDAO client=null;
+    private static LocalDate fecha_consulta=null;
     
     public static void setCliente(ClientesDAO c){
         client=c;
@@ -21,4 +23,14 @@ public class ApoyoClientes {
     public static ClientesDAO getCliente(){
         return client;
     }
+
+    public static LocalDate getFecha_consulta() {
+        return fecha_consulta;
+    }
+
+    public static void setFecha_consulta(LocalDate d) {
+        fecha_consulta=d;
+    }
+
+    
 }

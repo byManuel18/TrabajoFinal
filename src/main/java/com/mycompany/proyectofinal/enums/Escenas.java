@@ -13,7 +13,9 @@ public enum Escenas {
     ROOT("view/root"),
     PRIMARY("view/primary"),
     SECONDARY("view/secondary"),
-    LOBBY("view/lobby");
+    LOBBY("view/lobby"),
+    MODIFICARDIETA("view/ADDProductosaDieta"),
+    ;
 
     private String url;
 

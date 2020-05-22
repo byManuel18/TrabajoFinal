@@ -58,7 +58,7 @@ public class ClientesDAO extends Cliente {
 
     public ClientesDAO(String cdni) {
         super();
-
+        persiste=false;
         Connection conn = ConexionUtilidades.getConntion();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -71,7 +71,7 @@ public class ClientesDAO extends Cliente {
                     this.nombre = rs.getString("nombre");
                     this.dni = rs.getString("Dni");
                     this.altura = rs.getFloat("altura");
-                    this.peso=rs.getFloat("peso");
+                    this.peso = rs.getFloat("peso");
                     this.contrase = rs.getString("Contraseña");
                     this.foto = rs.getBytes("foto");
                     Date d = rs.getDate("fecha_nacimiento");
@@ -88,6 +88,7 @@ public class ClientesDAO extends Cliente {
             Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
+                if(ps!=null)
                 ps.close();
                 if (rs != null) {
                     rs.close();
@@ -98,6 +99,93 @@ public class ClientesDAO extends Cliente {
         }
 
     }
+    
+    public void persist() {
+        persiste = true;
+    }
+
+    public void detatch() {
+        persiste = false;
+    }
+
+    public void setNombre(String nombre) {
+        super.setNombre(nombre);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setContrase(String contrase) {
+        super.setContraseña(contrase);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+        super.setFecha_nacimiento(fecha_nacimiento);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setFoto(byte[] foto) {
+        super.setFoto(foto);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setPeso(float peso) {
+        super.setPeso(peso);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setAltura(float altura) {
+        super.setAltura(altura);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setIndice_masa(IMC indice_masa) {
+        super.setIndice_masa(indice_masa);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setObjetivo(Objetivo objetivo) {
+        super.setObjetivo(objetivo);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setNivel_ejer(Nivel_Ejercicio nivel_ejer) {
+        super.setNivel_ejer(nivel_ejer);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setCalorias_necesarias(float calorias_necesarias) {
+        super.setCalorias_necesarias(calorias_necesarias);
+        if (persiste == true) {
+            update();
+        }
+    }
+
+    public void setS(Sexo s) {
+        super.setS(s);
+        if (persiste == true) {
+            update();
+        }
+    }
+    
+    
 
     public int save() {
         int resultado = -1;
@@ -124,6 +212,7 @@ public class ClientesDAO extends Cliente {
             Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
+                if(ps!=null)
                 ps.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,6 +220,60 @@ public class ClientesDAO extends Cliente {
         }
 
         return resultado;
+    }
+
+    public int remove() {
+        int resultado = -1;
+        Connection conn = ConexionUtilidades.getConntion();
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement(Sentencias.DELETECLIENTE.getSenten());
+            ps.setString(1, dni);
+            resultado = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(ps!=null)
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return resultado;
+    }
+
+    public int update() {
+        int resultad = -1;
+        Connection conn = ConexionUtilidades.getConntion();
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement(Sentencias.UPDATECLIENTE.getSenten());
+            ps.setString(1, nombre);
+            Date sqldate = Date.valueOf(fecha_nacimiento);
+            ps.setDate(2, sqldate);
+            ps.setString(3, contrase);
+            ps.setBytes(4, foto);
+            ps.setFloat(5, altura);
+            ps.setFloat(6, peso);
+            ps.setString(7, indice_masa.toString());
+            ps.setString(8, objetivo.toString());
+            ps.setString(9, nivel_ejer.toString());
+            ps.setFloat(10, calorias_necesarias);
+            ps.setString(11, s.toString());
+            ps.setString(12, dni);
+            resultad = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(ps!=null)
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return resultad;
     }
 
 }

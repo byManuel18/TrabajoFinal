@@ -12,19 +12,20 @@ import com.mycompany.proyectofinal.enums.Grupo_Muscular;
  * @author Manueh
  */
 public class Ejercicio {
-
-    private String nombre;
-    private int repeticiones;
-    private int series;
-    private String descripcion;
-    private byte[] foto;
-    private Grupo_Muscular musculo;    
+    protected int id;
+    protected String nombre;
+    protected int repeticiones;
+    protected int series;
+    protected String descripcion;
+    protected byte[] foto;
+    protected Grupo_Muscular musculo;    
    
     public Ejercicio() {
-        this("",0,0,"",Grupo_Muscular.PECHO);
+        this(-1,"",0,0,"",Grupo_Muscular.PECHO);
     }
 
-    public Ejercicio(String nombre, int repeticiones, int series, String descripcion, Grupo_Muscular musculo) {
+    public Ejercicio(int id,String nombre, int repeticiones, int series, String descripcion, Grupo_Muscular musculo) {
+        this.id=id;
         this.nombre = nombre;
         this.repeticiones = repeticiones;
         this.series = series;
@@ -81,20 +82,44 @@ public class Ejercicio {
     public void setFoto(byte[] foto) {
         this.foto = foto;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
     @Override
     public boolean equals(Object obj) {
-        boolean igual = false;
-        if (obj != null) {
-            if (this == obj) {
-                igual = true;
-            } else {
-                if (obj instanceof Ejercicio) {
-                    Ejercicio n = (Ejercicio) obj;
-                    igual = this.getNombre().equals(n.getNombre());
-                }
-            }
+        if (this == obj) {
+            return true;
         }
-        return igual;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ejercicio other = (Ejercicio) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
+
+    @Override
+    public String toString() {
+        return "Ejercicio{" + "id=" + id + ", nombre=" + nombre + ", repeticiones=" + repeticiones + ", series=" + series + ", descripcion=" + descripcion + ", foto=" + foto + ", musculo=" + musculo + '}';
+    }
+    
+    
+    
 }

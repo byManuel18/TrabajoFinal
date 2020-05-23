@@ -13,7 +13,7 @@ import com.mycompany.proyectofinal.enums.Sexo;
 import java.time.LocalDate;
 
 /**
- *
+ *  Clase objeto cliente 
  * @author Manueh
  */
 public class Cliente {
@@ -48,7 +48,9 @@ public class Cliente {
         CalcularObjetivo();
         CalcularCaloriasNecesarias();
     }
-
+    /**
+     * Calcula el IMC
+     */
     private void CalculaIMC() {
         float nume = (this.peso/(float)Math.pow(this.altura, 2));
         if (nume < 18.5) {
@@ -61,7 +63,9 @@ public class Cliente {
             this.indice_masa = IMC.SOBREPESO;
         }
     }
-
+    /**
+     * Calcula el objetivo 
+     */
     private void CalcularObjetivo() {
         switch (this.indice_masa) {
             case BAJO_PESO:
@@ -78,7 +82,10 @@ public class Cliente {
                 break;
         }
     }
-
+    
+    /**
+     * Calcula las calorias necesarias 
+     */
     private void CalcularCaloriasNecesarias() {
         int edad = LocalDate.now().compareTo(fecha_nacimiento);
         float metabolismo_basal = (10 * this.peso) + (6.25f * (this.altura*100)) - (edad * 5);

@@ -8,7 +8,7 @@ package com.mycompany.proyectofinal.models;
 import com.mycompany.proyectofinal.enums.Grupo_Muscular;
 
 /**
- *
+ * Clase de l objeto ejercicio 
  * @author Manueh
  */
 public class Ejercicio {

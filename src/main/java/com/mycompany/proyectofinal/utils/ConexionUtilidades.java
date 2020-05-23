@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase que controla la conexión a la base de datos 
  * @author Manueh
  */
 public class ConexionUtilidades {
@@ -30,7 +30,10 @@ public class ConexionUtilidades {
         
         return conn;
     }
-    
+    /**
+     * Metodo que crea una conexion con los datos cargados de un xml 
+     * @return conexion a un abase de datos 
+     */
     public static Connection getConntion(){
         if(_conec==null){
             Canal c=new Canal();
@@ -45,7 +48,9 @@ public class ConexionUtilidades {
         }
         return _conec;
     }
-    
+    /**
+     * Cierra la conexión abierta 
+     */
     public static void cerrarConec(){
         try {
             if(_conec!=null){

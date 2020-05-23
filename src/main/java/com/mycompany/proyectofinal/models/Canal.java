@@ -7,7 +7,7 @@ package com.mycompany.proyectofinal.models;
 
 
 /**
- *
+ *  Clase que nos permite hacer un canal que guarde los datos para conectar la base de datos 
  * @author Manueh
  */
 

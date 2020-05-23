@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.enums;
 
 /**
- *
+ * Clase enum que nos sirve para elegir entre las vistas con mayor versatilidad
  * @author Manueh
  */
 public enum Escenas {

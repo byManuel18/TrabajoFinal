@@ -23,13 +23,17 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * Clase para utilidades varias 
  * @author Manueh
  */
 public class UtilidadesGenerales {
 
     private final static String EXPRESION_DNI = "^[0-9]{8,8}[A-Za-z]$";
-
+    /**
+     * Pasa un objeto tipo image a bits
+     * @param img imagen a convertir 
+     * @return array de bists 
+     */
     public static byte[] pasarimagenabites(Image img) {
         byte[] bits = null;
         if (img != null) {
@@ -46,7 +50,11 @@ public class UtilidadesGenerales {
         }
         return bits;
     }
-
+    /**
+     * Pasa un array de bits a image
+     * @param bi array a transformar
+     * @return devuelve una imagen 
+     */
     public static Image pasardebitsaimage(byte[] bi) {
         if(bi==null){
             return null;

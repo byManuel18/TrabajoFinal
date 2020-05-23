@@ -32,7 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 /**
- *
+ * Clase que controla la vista de editar perfil 
  * @author Manueh
  */
 public class ControladorEditarPerfil extends General {
@@ -56,7 +56,11 @@ public class ControladorEditarPerfil extends General {
     
     private Cliente clie;
     
-
+    /**
+     * ada valor a todos los campos con los datos del cliente introducido y le da valores a los choicebox
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         clie=ApoyoClientes.getCliente();
@@ -80,7 +84,10 @@ public class ControladorEditarPerfil extends General {
         ejercicio.setValue(clie.getNivel_ejer());
         
     }
-    
+    /**
+     * Velve a la vista del lobby
+     * @param event 
+     */
     @FXML
     private void Volver(ActionEvent event){
         try {
@@ -89,7 +96,10 @@ public class ControladorEditarPerfil extends General {
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Carga una imagen a partir de un filechooser
+     * @param event 
+     */
     @FXML
     private void CargarImagen(ActionEvent event) {
         FileChooser flich = new FileChooser();
@@ -104,6 +114,9 @@ public class ControladorEditarPerfil extends General {
             img.setImage(im);
         }
     }
+    /**
+     * Guarda los nuevos datos introducidos 
+     */
     @FXML
     private void Guardar(){
         ClientesDAO guar= new ClientesDAO(clie);
@@ -151,7 +164,9 @@ public class ControladorEditarPerfil extends General {
         }
         
     }
-    
+    /**
+     * Elimina el cliente de la base de datos y vuelve al lobby
+     */
     @FXML
     private void Eliminar(){
         ClientesDAO eli=new ClientesDAO(clie.getDni());

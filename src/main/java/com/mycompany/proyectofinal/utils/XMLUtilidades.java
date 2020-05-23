@@ -14,12 +14,15 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 /**
- *
+ *  Clase dedicada aescribir y leer xml
  * @author Manueh
  */
 public class XMLUtilidades {
     public static String file="canaldeconexion.xml";
-    
+    /**
+     * Pinta en un xml el canal indicado (daros para cargar base de datos)
+     * @param dato canal a escribir
+     */
     public static void EscribeCanal(Canal dato){
         JAXBContext context;
         try {
@@ -36,7 +39,10 @@ public class XMLUtilidades {
         }
         
     }
-    
+    /**
+     * Devulve una canal cargado de un xml
+     * @return canal a conectarse
+     */
     public static Canal CargarCanal(){
         Canal c=null;
         File f=new File(file);

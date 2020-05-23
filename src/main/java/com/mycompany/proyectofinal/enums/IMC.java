@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.enums;
 
 /**
- *
+ * Clase enum que controla el imc
  * @author Manueh
  */
 public enum IMC {

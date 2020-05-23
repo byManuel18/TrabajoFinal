@@ -32,7 +32,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 
 /**
- *
+ * Clase controladora de la vista de Administrador 
  * @author Manueh
  */
 public class ControladorAdmin extends General {
@@ -82,7 +82,11 @@ public class ControladorAdmin extends General {
 
     private ObservableList<Producto> data_pro;
     private ObservableList<Ejercicio> data_ejer;
-
+    /**
+     * Se encarga de mostrar las tablas de ejercicios y productos así como modificarlas en tiempo real a partir de una modificación en la tabla 
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.data_ejer = FXCollections.observableArrayList();
@@ -453,21 +457,28 @@ public class ControladorAdmin extends General {
         tabla_pro.setEditable(true);
         tabla_pro.setItems(data_pro);
     }
-
+    /**
+     * Actualiza la tabla ejercicios con los ejercicios buscados 
+     */
     @FXML
     private void buscarEjer() {
         List<Ejercicio> ejer = EjerciciosDAO.ListAll(busqueda_ejer.getText());
         data_ejer.clear();
         data_ejer.addAll(ejer);
     }
-
+    /**
+     * Actualiza la tabla de los productos con los productos buscados 
+     */
     @FXML
     private void buscarPro() {
         List<Producto> prod = ProductoDAO.buscar(busqueda_pro.getText());
         data_pro.clear();
         data_pro.addAll(prod);
     }
-
+    /**
+     * Elimina un producto de la base datos. Utiliza el elemento seleccionado de la tabla 
+     * @param event 
+     */
     @FXML
     private void EliminarPro(ActionEvent event) {
         Producto aeliminar = tabla_pro.getSelectionModel().getSelectedItem();
@@ -481,7 +492,10 @@ public class ControladorAdmin extends General {
 
         }
     }
-
+    /**
+     * Elimina un ejercicio de la base datos. Utiliza el elemento seleccionado de la tabla
+     * @param event 
+     */
     @FXML
     private void EliminarEjer(ActionEvent event) {
         Ejercicio aeliminar = tabla_ejer.getSelectionModel().getSelectedItem();
@@ -496,7 +510,10 @@ public class ControladorAdmin extends General {
 
         }
     }
-    
+    /**
+     * Vuelve a la pantalla de inicio del programa 
+     * @param event 
+     */
     @FXML
     private void Volver(ActionEvent event){
         try {
@@ -505,6 +522,10 @@ public class ControladorAdmin extends General {
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    /**
+     * Nos dirije a la vista de añadir ejercicios 
+     * @param event 
+     */
     @FXML
     private void AñadirEjer(ActionEvent event){
         try {
@@ -513,6 +534,10 @@ public class ControladorAdmin extends General {
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    /**
+     * Nos lleva a la vista de añadir productos 
+     * @param event 
+     */
     @FXML
     private void AñadirPro(ActionEvent event){
         try {

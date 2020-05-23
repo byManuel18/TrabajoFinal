@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Clase que nos sirve para pintar en xml los datos de una conexión
  * @author Manueh
  */
 @XmlRootElement(name="conns")

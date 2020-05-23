@@ -23,7 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase que controla la base de datos de clientes 
  * @author Manueh
  */
 public class ClientesDAO extends Cliente {
@@ -55,7 +55,10 @@ public class ClientesDAO extends Cliente {
         calorias_necesarias = c.getCalorias_necesarias();
         this.persiste = false;
     }
-
+    /**
+     * Crea un ClienteDao a partir de un string que busca en la base de datos. Si no hay ninguno lo crea por defecto
+     * @param cdni Dni del cliente a buscar 
+     */
     public ClientesDAO(String cdni) {
         super();
         persiste=false;
@@ -186,7 +189,10 @@ public class ClientesDAO extends Cliente {
     }
     
     
-
+    /**
+     * Método que guarda un cliente en la base de datos 
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public int save() {
         int resultado = -1;
         Connection conn = ConexionUtilidades.getConntion();
@@ -221,7 +227,10 @@ public class ClientesDAO extends Cliente {
 
         return resultado;
     }
-
+    /**
+     * Metodo que borra un cliente de la base de datos
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public int remove() {
         int resultado = -1;
         Connection conn = ConexionUtilidades.getConntion();
@@ -242,7 +251,10 @@ public class ClientesDAO extends Cliente {
         }
         return resultado;
     }
-
+    /**
+     * Método que upgradea un cliente en la base de datos
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public int update() {
         int resultad = -1;
         Connection conn = ConexionUtilidades.getConntion();

@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.enums;
 
 /**
- *
+ * Clase enum que tiene todas las sentncias sql 
  * @author Manueh
  */
 public enum Sentencias {

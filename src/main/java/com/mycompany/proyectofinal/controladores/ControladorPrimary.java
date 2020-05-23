@@ -27,7 +27,7 @@ public class ControladorPrimary extends General {
     private TextField dni;
     @FXML
     private PasswordField contrase;
-
+    
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot(Escenas.SECONDARY.getUrl());
@@ -37,7 +37,11 @@ public class ControladorPrimary extends General {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-
+    /**
+     * Inicia el programa con el cliente de los datos introducidos. Si coincide con 44170333Y nos lleva a la vista en modo administrador 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void iniciarlobby(ActionEvent event) throws IOException {
         ClientesDAO clientes = new ClientesDAO(dni.getText().toUpperCase());

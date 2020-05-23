@@ -19,7 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ *  Clase que controla la base de datos de productos 
  * @author Manueh
  */
 public class ProductoDAO extends Producto {
@@ -56,7 +56,10 @@ public class ProductoDAO extends Producto {
         foto = p.getFoto();
         persiste = false;
     }
-
+    /**
+     * Constructor que genera un prodcutodao a partir de un id. Si existe en la base de datos lo cogerá si no hace uno por defecto
+     * @param id 
+     */
     public ProductoDAO(int id) {
         super();
         persiste=false;
@@ -181,7 +184,10 @@ public class ProductoDAO extends Producto {
             save();
         }
     }
-
+    /**
+     * Método que inserta un nuevo poducto o lo upgradea dependiendo de si la id es positiva o negativa 
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public int save() {
         int resultado = -1;
         Connection conn = ConexionUtilidades.getConntion();
@@ -250,7 +256,10 @@ public class ProductoDAO extends Producto {
         }
         return resultado;
     }
-
+    /**
+     * Método que elimina un producto 
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public int remove() {
         int resultado = -1;
         Connection conn = ConexionUtilidades.getConntion();
@@ -273,11 +282,18 @@ public class ProductoDAO extends Producto {
 
         return resultado;
     }
-
+    /**
+     * Lista todos los ejercicios 
+     * @return devulve una lista con todos los productos
+     */
     public static List<Producto> ListarAll() {
         return ListarAll(-1);
     }
-
+    /**
+     * Metodo que muestra todos los productos, si el introducido el menor a cero nos imprimirá todos si es mayor, nos imprimirá uno en concreto 
+     * @param patter id específico 
+     * @return lista de todos los ejercicios que coincidan con el patter 
+     */
     public static List<Producto> ListarAll(int patter) {
         List<Producto> listapro = new ArrayList<>();
         Connection conn = ConexionUtilidades.getConntion();
@@ -331,7 +347,11 @@ public class ProductoDAO extends Producto {
         }
         return listapro;
     }
-
+    /**
+     * Devulve una lista de productos cuyo nombre coincida con el dato introducido 
+     * @param patter string nombre para buscar
+     * @return una lista de productos que coincide con el patter
+     */
     public static List<Producto> buscar(String patter) {
         List<Producto> listapro = new ArrayList<>();
         Connection conn = ConexionUtilidades.getConntion();
@@ -364,6 +384,12 @@ public class ProductoDAO extends Producto {
         return listapro;
     }
     
+    /**
+     * Método que devulve una lista de productos de una rutina 
+     * @param dnicli string del cliente 
+     * @param da fecha de la rutina 
+     * @return lista de todos los productos de una dieta 
+     */
     public static List<Producto> ListarDietaDia(String dnicli, String da){
         List<Producto> listapro = new ArrayList<>();
         Connection conn = ConexionUtilidades.getConntion();
@@ -395,7 +421,13 @@ public class ProductoDAO extends Producto {
             }
         return listapro;
     }
-    
+    /**
+     * metodo que borra un producto de una rutina 
+     * @param dniclie string dni cliente 
+     * @param datee string fecha rutina 
+     * @param id id del producto a eliminar de la rutina 
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public static int remuveDieta(String dniclie,String datee,int idp){
         int resultado=-1;
         Connection conn = ConexionUtilidades.getConntion();
@@ -420,7 +452,13 @@ public class ProductoDAO extends Producto {
         
         return resultado;
     }
-    
+    /**
+     * Añade un producto a una dieta 
+     * @param dnicli string dni cliente 
+     * @param date string fecha rutina 
+     * @param idpro id producto a introducir en la rutina 
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public static int AddalaDieta(String dnicli,String date,int idpro){
         int resultado=-1;
         Connection conn = ConexionUtilidades.getConntion();

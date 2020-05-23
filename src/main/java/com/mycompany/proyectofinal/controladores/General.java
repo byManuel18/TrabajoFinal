@@ -13,7 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 /**
- *
+ * Clase abstracta que implementa inicializable
  * @author Manueh
  */
 public abstract class General implements Initializable{

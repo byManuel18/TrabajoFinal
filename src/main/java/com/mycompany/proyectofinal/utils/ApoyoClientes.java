@@ -9,7 +9,7 @@ import com.mycompany.proyectofinal.DAOS.ClientesDAO;
 import java.time.LocalDate;
 
 /**
- *
+ * Clase destinada al apoyo entre vistas 
  * @author Manueh
  */
 public class ApoyoClientes {

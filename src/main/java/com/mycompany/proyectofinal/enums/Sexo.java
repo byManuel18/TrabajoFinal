@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.enums;
 
 /**
- *
+ * Enum que controla el sexo
  * @author Manueh
  */
 public enum Sexo {

@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.enums;
 
 /**
- *
+ * Clase enum para controlar el grupo muscular 
  * @author Manueh
  */
 public enum Grupo_Muscular {

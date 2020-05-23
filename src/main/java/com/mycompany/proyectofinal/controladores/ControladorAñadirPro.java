@@ -23,7 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 /**
- *
+ * Classe que controla la vista de añadir producto 
  * @author Manueh
  */
 public class ControladorAñadirPro extends General {
@@ -56,7 +56,9 @@ public class ControladorAñadirPro extends General {
     public void initialize(URL url, ResourceBundle rb) {
         ide = img.getImage();
     }
-
+    /**
+     * Limpia los campos en ventana 
+     */
     @FXML
     private void Limpiar() {
         img.setImage(ide);
@@ -72,7 +74,10 @@ public class ControladorAñadirPro extends General {
         calorias.clear();
 
     }
-
+    /**
+     * Vuelve a la ventana de administrador
+     * @param event 
+     */
     @FXML
     private void Volver(ActionEvent event) {
         try {
@@ -81,7 +86,10 @@ public class ControladorAñadirPro extends General {
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Carga una imagen a partir de un filechooser
+     * @param event 
+     */
     @FXML
     private void CargarImagen(ActionEvent event) {
         FileChooser flich = new FileChooser();
@@ -96,7 +104,9 @@ public class ControladorAñadirPro extends General {
             img.setImage(im);
         }
     }
-
+    /**
+     * Guarda un producto en la base de datos 
+     */
     @FXML
     private void Guardar() {
         ProductoDAO nuev = null;

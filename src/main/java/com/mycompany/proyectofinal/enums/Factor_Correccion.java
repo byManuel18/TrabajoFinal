@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.enums;
 
 /**
- *
+ * Clase enum para controla el factor de correccion. Devulve un float 
  * @author Manueh
  */
 public enum Factor_Correccion {

@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.models;
 
 /**
- *
+ * Clase de objeto producto 
  * @author Manueh
  */
 public class Producto {

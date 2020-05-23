@@ -25,7 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 /**
- *
+ * Clase que controla la vista de añadir ejercicios a la base de datos 
  * @author Manueh
  */
 public class ControladorAñadirEjer extends General {
@@ -44,7 +44,11 @@ public class ControladorAñadirEjer extends General {
     private TextField repeticiones;
 
     private Image ide;
-
+    /**
+     * Inicializa a una imagen por defecto y le da valores al choicebox
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ide = img.getImage();
@@ -52,7 +56,10 @@ public class ControladorAñadirEjer extends General {
             musculo.getItems().add(s);
         }
     }
-
+    /**
+     * Vuelve a la vemtana de administrador 
+     * @param event 
+     */
     @FXML
     private void Volver(ActionEvent event) {
         try {
@@ -61,7 +68,10 @@ public class ControladorAñadirEjer extends General {
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * carga una imagena partir de un filechooser
+     * @param event 
+     */
     @FXML
     private void CargarImagen(ActionEvent event) {
         FileChooser flich = new FileChooser();
@@ -76,7 +86,10 @@ public class ControladorAñadirEjer extends General {
             img.setImage(im);
         }
     }
-
+    /**
+     * Limpia todos los campos en pantalla
+     * @param event 
+     */
     @FXML
     private void Limpiar(ActionEvent event) {
         img.setImage(ide);
@@ -87,7 +100,10 @@ public class ControladorAñadirEjer extends General {
         musculo.setValue(null);
 
     }
-
+    /**
+     * Guarda el producto en la base de datos 
+     * @param event 
+     */
     @FXML
     private void Guardar(ActionEvent event) {
 

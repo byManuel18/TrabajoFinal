@@ -34,7 +34,7 @@ import javafx.scene.image.ImageView;
 
 
 /**
- *
+ *  Clase que controla el lobby
  * @author Manueh
  */
 public class ControladorLobby extends General {
@@ -119,7 +119,11 @@ public class ControladorLobby extends General {
     private ObservableList<Producto> data_pro;
     private ObservableList<Ejercicio> data_ejer;
     private ClientesDAO cliente;
-
+    /**
+     * Inicializa a ... algunas label le da valor las observelist y actualiza otras labels según datos del cliente 
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.data_ejer = FXCollections.observableArrayList();
@@ -147,7 +151,10 @@ public class ControladorLobby extends General {
         
 
     }
-
+    /**
+     * Elimina un producto de la dieta 
+     * @param event 
+     */
     @FXML
     private void EliminarPro(ActionEvent event) {
         Producto aeliminar=tabla_productos.getSelectionModel().getSelectedItem();
@@ -158,7 +165,10 @@ public class ControladorLobby extends General {
             
         }
     }
-
+    /**
+     * Elimina un ejercicio de la rutina 
+     * @param event 
+     */
     @FXML
     private void EliminarEjer(ActionEvent event) {
         Ejercicio aeliminar=tabla_ejercicios.getSelectionModel().getSelectedItem();
@@ -170,7 +180,10 @@ public class ControladorLobby extends General {
             
         }
     }
-
+    /**
+     * Actualiza las dos tablas así como alguanas labels sukanddo el total de los productos 
+     * @param event 
+     */
     @FXML
     private void ActualizarTodo(ActionEvent event) {
         String fecha = fecha_busqueda.getValue().toString();
@@ -207,7 +220,11 @@ public class ControladorLobby extends General {
         
 
     }
-
+    /**{
+     * Actualiza la tabla a la rutina mediante el dni y la fecha introducida 
+     * @param f
+     * @param d 
+     */
     private void actualizarTablaEjer(String f, String d) {
         List<Ejercicio> ejer = EjerciciosDAO.listarRutinaEjer(f, d);
         this.data_ejer.addAll(ejer);
@@ -241,7 +258,11 @@ public class ControladorLobby extends General {
         this.tabla_ejercicios.setItems(data_ejer);
 
     }
-
+    /**
+     * Actualiza la tabla a la productos mediante el dni y la fecha introducida 
+     * @param f
+     * @param d 
+     */
     private void actualizatTablaPro(String f, String d) {
         List<Producto> prod = ProductoDAO.ListarDietaDia(f, d);
         this.data_pro.addAll(prod);
@@ -288,7 +309,10 @@ public class ControladorLobby extends General {
         }
         this.tabla_productos.setItems(data_pro);
     }
-    
+    /**
+     * Nos lleva a la vista de modificar dieta 
+     * @param event 
+     */
     @FXML
     private void ModificarDieta(ActionEvent event){
         try {
@@ -300,7 +324,10 @@ public class ControladorLobby extends General {
             Logger.getLogger(ControladorLobby.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Nos lleva a la vista de modificar rutina 
+     * @param event 
+     */
     @FXML
     private void ModificarRutina(ActionEvent event){
         try {
@@ -312,7 +339,10 @@ public class ControladorLobby extends General {
             Logger.getLogger(ControladorLobby.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Nos lleva a la vista de editar perfil
+     * @param event 
+     */
     @FXML
     private void Editarperfil(ActionEvent event){
         try {
@@ -321,6 +351,10 @@ public class ControladorLobby extends General {
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    /**
+     * Nos devulve al la vista de inicio
+     * @param event 
+     */
     @FXML
     private void CerrarCesion(ActionEvent event){
         try {

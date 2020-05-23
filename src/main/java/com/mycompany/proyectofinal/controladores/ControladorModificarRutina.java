@@ -30,7 +30,7 @@ import javafx.scene.control.TextField;
 import javax.swing.ImageIcon;
 
 /**
- *
+ *  Clasee que controla la vista de modificar rutina 
  * @author Manueh
  */
 public class ControladorModificarRutina extends General {
@@ -68,7 +68,11 @@ public class ControladorModificarRutina extends General {
     private ObservableList<Ejercicio> data_ejer_tener;
     private LocalDate fecha_busqueda_ini;
     private Cliente cli;
-
+    /**
+     * Inicializa la tablas de los ejercicios disponible y la tabla de los ejercicios que tenemos en un dñia si previamente hemos puesto una 
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.data_ejer_dis = FXCollections.observableArrayList();
@@ -108,7 +112,9 @@ public class ControladorModificarRutina extends General {
 
         tabla_ejercicios_dis.setItems(data_ejer_dis);
     }
-
+    /**
+     * Muestra nuestar rutina en la tabla
+     */
     @FXML
     public void MostrarRutina() {
         if (fecha != null && fecha.getValue() != null) {
@@ -138,7 +144,10 @@ public class ControladorModificarRutina extends General {
         }
         tabla_ejercicios_tene.setItems(data_ejer_tener);
     }
-
+    /**
+     * Vuelve al lobby
+     * @param event 
+     */
     @FXML
     private void Volver(ActionEvent event) {
         try {
@@ -147,7 +156,10 @@ public class ControladorModificarRutina extends General {
             Logger.getLogger(ControladorModificarRutina.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Añade un ejercicio a la rutina especificada 
+     * @param event 
+     */
     @FXML
     private void AñadirEjer(ActionEvent event) {
         Ejercicio n=tabla_ejercicios_dis.getSelectionModel().getSelectedItem();
@@ -156,7 +168,10 @@ public class ControladorModificarRutina extends General {
             EjerciciosDAO.añadiralaruttina(cli.getDni(), fecha.getValue().toString(), n.getId());
         }
     }
-
+    /**
+     * Elimina un ejercicio de la dieta 
+     * @param event 
+     */
     @FXML
     private void EliminarEjer(ActionEvent event) {
         Ejercicio n=tabla_ejercicios_tene.getSelectionModel().getSelectedItem();
@@ -165,7 +180,10 @@ public class ControladorModificarRutina extends General {
             EjerciciosDAO.removeejerderutina(cli.getDni(), fecha.getValue().toString(), n.getId());
         }
     }
-
+    /**
+     * Busca un ejercico de la lista 
+     * @param event 
+     */
     @FXML
     private void Busqueda(ActionEvent event) {
         List<Ejercicio> p =EjerciciosDAO.ListAll(textobusqueda.getText());

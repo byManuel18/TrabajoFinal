@@ -6,6 +6,7 @@ module com.mycompany.proyectofinal {
     requires java.prefs;
     requires java.xml.bind;
     requires java.desktop;
+   
     opens com.mycompany.proyectofinal to javafx.fxml;
     opens com.mycompany.proyectofinal.controladores to javafx.fxml;
     opens com.mycompany.proyectofinal.models to java.xml.bind;

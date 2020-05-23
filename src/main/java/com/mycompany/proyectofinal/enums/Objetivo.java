@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.enums;
 
 /**
- *
+ * Clase enum que controla el objetivo 
  * @author Manueh
  */
 public enum Objetivo {

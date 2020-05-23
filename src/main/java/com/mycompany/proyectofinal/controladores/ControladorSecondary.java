@@ -30,7 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 /**
- *
+ *  Clase que controla la vista de añadir cliente 
  * @author Manueh
  */
 public class ControladorSecondary extends General{
@@ -53,7 +53,10 @@ public class ControladorSecondary extends General{
     private ChoiceBox<Sexo> sexo;
     @FXML
     private ChoiceBox<Nivel_Ejercicio> ni_ejer;
-
+    /**
+     * Craga una imagen a partir de un filechoice
+     * @param event 
+     */
     @FXML
     private void CargarImagen(ActionEvent event) {
         FileChooser flich = new FileChooser();
@@ -68,7 +71,10 @@ public class ControladorSecondary extends General{
             img.setImage(im);
         }
     }
-
+    /**
+     * Vuelve a la vista de inicio 
+     * @param event 
+     */
     @FXML
     private void Volver(ActionEvent event){
         try {
@@ -77,7 +83,11 @@ public class ControladorSecondary extends General{
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Agrega un cliente a la base de datos 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void Add(ActionEvent event) throws IOException {
         byte[] imagenenbits = null;
@@ -109,7 +119,11 @@ public class ControladorSecondary extends General{
         }
 
     }
-
+    /**
+     * Inicializa los choicebox al iniciar la vista 
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (sexo != null) {

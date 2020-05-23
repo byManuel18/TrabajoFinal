@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ *  Clase que controla la base de datos de ejercicios 
  * @author Manueh
  */
 public class EjerciciosDAO extends Ejercicio {
@@ -52,7 +52,10 @@ public class EjerciciosDAO extends Ejercicio {
         series = ej.getSeries();
         persiste = false;
     }
-
+    /**
+     * CConstructor que genera un EjercicioDao a partir de un id que busca en la base de datos. Si no encuentra lo crea por defecto 
+     * @param id id del producto a buscar para crear 
+     */
     public EjerciciosDAO(int id) {
         super();
         persiste = false;
@@ -141,7 +144,10 @@ public class EjerciciosDAO extends Ejercicio {
             save();
         }
     }
-
+    /**
+     * Guarda un ejercicio o modificacion en la base de datos 
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public int save() {
         int resultado = -1;
         Connection conn = ConexionUtilidades.getConntion();
@@ -202,7 +208,10 @@ public class EjerciciosDAO extends Ejercicio {
         }
         return resultado;
     }
-
+    /**
+     * Borra un cliente de la base de datos 
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public int delete() {
         int resultado = -1;
         Connection conn = ConexionUtilidades.getConntion();
@@ -228,7 +237,11 @@ public class EjerciciosDAO extends Ejercicio {
     public static List<Ejercicio> ListAll() {
         return ListAll("");
     }
-
+    /**
+     * Lista todos los ejercicios a partir de un nombre introducido 
+     * @param patter string nombre introducido 
+     * @return una lista de ejercicios 
+     */
     public static List<Ejercicio> ListAll(String patter) {
         List<Ejercicio> listapro = new ArrayList<>();
         Connection conn = ConexionUtilidades.getConntion();
@@ -288,7 +301,12 @@ public class EjerciciosDAO extends Ejercicio {
         }
         return listapro;
     }
-
+    /**
+     * Metodo que devulve los ejercicios de una rutina concreta a partir del dni la fecha 
+     * @param cdni string dni del cliente 
+     * @param da string fecha de creación de la rutina 
+     * @return una lista de ejercicios 
+     */
     public static List<Ejercicio> listarRutinaEjer(String cdni, String da) {
         List<Ejercicio> listapro = new ArrayList<>();
         Connection conn = ConexionUtilidades.getConntion();
@@ -322,7 +340,13 @@ public class EjerciciosDAO extends Ejercicio {
         }
         return listapro;
     }
-
+    /**
+     * Borra una rutina a paartir de la fecha un cliente y el id de un ejercicio
+     * @param dnic String dni cliente 
+     * @param fe string fecha rutina 
+     * @param id id del ejercicio 
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public static int removeejerderutina(String dnic, String fe, int id) {
         int resultado = -1;
         Connection conn = ConexionUtilidades.getConntion();
@@ -346,7 +370,13 @@ public class EjerciciosDAO extends Ejercicio {
         }
         return resultado;
     }
-    
+    /**
+     * Añade un ejercicio a una rutina 
+     * @param dnic string dni cliente 
+     * @param fechar string fecha cliente 
+     * @param idej id del ejercicio a introducir en la rutina
+     * @return int que nos dice la cantidad de filas modificadas
+     */
     public static int añadiralaruttina(String dnic,String fechar,int idej){
         int resultado=-1;
         Connection conn = ConexionUtilidades.getConntion();

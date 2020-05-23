@@ -31,7 +31,7 @@ import javafx.scene.control.TextField;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * Clase que controla la vista de modificar una dieta e un cliente 
  * @author Manueh
  */
 public class ControladorModificarDieta extends General {
@@ -89,7 +89,12 @@ public class ControladorModificarDieta extends General {
     private Cliente cli;
     private ObservableList<Producto> data_pro_dis;
     private ObservableList<Producto> data_pro_tene;
-
+    
+    /**
+     * Inicializa la tablas de los productos disponible y la tabla de los productos que tenemos en un dñia si previamente hemos puesto una 
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.data_pro_dis = FXCollections.observableArrayList();
@@ -144,7 +149,9 @@ public class ControladorModificarDieta extends General {
         tabla_productos_dis.setItems(data_pro_dis);
 
     }
-
+    /**
+     * Muestra los productos de una dieta concreata a partir de la fecha y el dni 
+     */
     @FXML
     private void MostarDieta() {
         if (fecha!=null&&fecha.getValue() != null) {
@@ -192,7 +199,10 @@ public class ControladorModificarDieta extends General {
         }
 
     }
-
+    /**
+     * Nos devuelve a la vista del lobby
+     * @param event 
+     */
     @FXML
     private void Volver(ActionEvent event) {
         try {
@@ -201,6 +211,10 @@ public class ControladorModificarDieta extends General {
             Logger.getLogger(ControladorModificarDieta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    /**
+     * Elimina un producto de la lista si está seleccionado 
+     * @param event 
+     */
     @FXML
     private void EliminarPro(ActionEvent event) {
         Producto aeliminar=tabla_productos_tene.getSelectionModel().getSelectedItem();
@@ -211,7 +225,10 @@ public class ControladorModificarDieta extends General {
             
         }
     }
-    
+    /**
+     * Añade un producto a la lista seleccionado uno de la lista disponibles
+     * @param event 
+     */
     @FXML
     private void AñadirPro(ActionEvent event) {
         Producto aañadir=tabla_productos_dis.getSelectionModel().getSelectedItem();
@@ -222,7 +239,10 @@ public class ControladorModificarDieta extends General {
             
         }
     }
-    
+    /**
+     * Busca un producto mediante un string 
+     * @param event 
+     */
     @FXML
     private void  Busqueda(ActionEvent event){
         

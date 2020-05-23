@@ -10,7 +10,7 @@
                 <goal>javafx:run</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath ${packageClassName}</exec.args>
+                <exec.args>-classpath %classpath com.mycompany.proyectofinal.Ejecutable</exec.args>
                 <exec.executable>java</exec.executable>
             </properties>
         </action>

@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinal.enums;
 
 /**
- *
+ * Clase enum que controa el nivel de ejercico
  * @author Manueh
  */
 public enum Nivel_Ejercicio {

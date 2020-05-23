@@ -88,11 +88,10 @@ public class ControladorSecondary extends General{
             if (!UtilidadesGenerales.validarDNI(dni.getText())) {
                 super.muestraerror("Error al validar dni", "", "Introduzca un dni válido");
             } else {
-                Cliente nu = new Cliente(name.getText(), dni.getText(), contrase.getText(), fecha_nacimiento.getValue(), s, peso, altura, n);
+                Cliente nu = new Cliente(name.getText(), dni.getText().toUpperCase(), contrase.getText(), fecha_nacimiento.getValue(), s, peso, altura, n);
                 if (imagenenbits != null) {
                     nu.setFoto(imagenenbits);
                 }
-                System.out.println(nu);
                 ClientesDAO nuevo = new ClientesDAO(nu);
                 nuevo.save();
                 super.muestrinformacion("Usuario creado correctamente!!", "Disfrute de la aplicación", "");

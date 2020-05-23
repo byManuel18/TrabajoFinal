@@ -232,7 +232,7 @@ public class EjerciciosDAO extends Ejercicio {
                 rs = ps.executeQuery();
                 if (rs != null) {
                     while (rs.next()) {
-                        Ejercicio nuevo = new Ejercicio(rs.getInt("id"), rs.getString("name"), rs.getInt("series"), rs.getInt("series"), rs.getString("descripcion"), Grupo_Muscular.valueOf(rs.getString("Grupo_Muscular")));
+                        Ejercicio nuevo = new Ejercicio(rs.getInt("id"), rs.getString("name"), rs.getInt("repeticiones"), rs.getInt("series"), rs.getString("descripcion"), Grupo_Muscular.valueOf(rs.getString("Grupo_Muscular")));
                         listapro.add(nuevo);
                     }
                 }
@@ -254,11 +254,11 @@ public class EjerciciosDAO extends Ejercicio {
         } else {
             try {
                 ps = conn.prepareStatement(Sentencias.SELECTALLEJERCICIOSPORNOMBRE.getSenten());
-                ps.setString(1, patter);
+                ps.setString(1, patter+"%");
                 rs = ps.executeQuery();
                 if (rs != null) {
                     while (rs.next()) {
-                        Ejercicio nuevo = new Ejercicio(rs.getInt("id"), rs.getString("name"), rs.getInt("series"), rs.getInt("series"), rs.getString("descripcion"), Grupo_Muscular.valueOf(rs.getString("Grupo_Muscular")));
+                        Ejercicio nuevo = new Ejercicio(rs.getInt("id"), rs.getString("name"), rs.getInt("repeticiones"), rs.getInt("series"), rs.getString("descripcion"), Grupo_Muscular.valueOf(rs.getString("Grupo_Muscular")));
                         listapro.add(nuevo);
                     }
                 }
@@ -293,7 +293,7 @@ public class EjerciciosDAO extends Ejercicio {
             rs = ps.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
-                    Ejercicio nuevo = new Ejercicio(rs.getInt("id"), rs.getString("name"), rs.getInt("series"), rs.getInt("series"), rs.getString("descripcion"), Grupo_Muscular.valueOf(rs.getString("Grupo_Muscular")));
+                    Ejercicio nuevo = new Ejercicio(rs.getInt("id"), rs.getString("name"), rs.getInt("repeticiones"), rs.getInt("series"), rs.getString("descripcion"), Grupo_Muscular.valueOf(rs.getString("Grupo_Muscular")));
                     listapro.add(nuevo);
                 }
             }
@@ -328,6 +328,30 @@ public class EjerciciosDAO extends Ejercicio {
         } catch (SQLException ex) {
             Logger.getLogger(EjerciciosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return resultado;
+    }
+    
+    public static int añadiralaruttina(String dnic,String fechar,int idej){
+        int resultado=-1;
+        Connection conn = ConexionUtilidades.getConntion();
+        PreparedStatement ps = null;
+        try {
+            ps=conn.prepareStatement(Sentencias.AÑADIRALARUTINA.getSenten());
+            ps.setString(1, dnic);
+            ps.setString(2, fechar);
+            ps.setInt(3, idej);
+            resultado=ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EjerciciosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
             try {
                 if (ps != null) {
                     ps.close();

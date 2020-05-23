@@ -22,6 +22,7 @@ public class App extends Application {
         scene = new Scene(loadFXML(Escenas.PRIMARY.getUrl()), 640, 480);
         //stage.getIcons().add(new Image("file:icon.png"));
         stage.setScene(scene);
+        stage.setTitle("NUTRICIÖN Y EJERCICIO");
         stage.show();
     }
 

@@ -45,9 +45,21 @@ public class ControladorLobby extends General {
     @FXML
     private ImageView img;
     @FXML
-    private Button eliminar_pro;
+    private Label calorias_tot;
     @FXML
-    private Button eliminar_ejer;
+    private Label gras_tot;
+    @FXML
+    private Label grassasa_tot;
+    @FXML
+    private Label hidrat_tot;
+    @FXML
+    private Label azucar_tot;
+    @FXML
+    private Label sodio_tot;
+    @FXML
+    private Label proteinas_tot;
+    @FXML
+    private Label fibra_tot;
     @FXML
     private Label nombre;
     @FXML
@@ -117,7 +129,14 @@ public class ControladorLobby extends General {
         this.data_pro = FXCollections.observableArrayList();
         cliente = ApoyoClientes.getCliente();
         img.setImage(UtilidadesGenerales.pasardebitsaimage(cliente.getFoto()));
-
+        calorias_tot.setText(".....");
+        gras_tot.setText(".....");
+        grassasa_tot.setText(".....");
+        hidrat_tot.setText(".....");
+        azucar_tot.setText(".....");
+        sodio_tot.setText(".....");
+        proteinas_tot.setText(".....");
+        fibra_tot.setText(".....");
         nombre.setText(cliente.getNombre());
         dni.setText(cliente.getDni());
         altura.setText(Float.toString(cliente.getAltura()));
@@ -160,6 +179,35 @@ public class ControladorLobby extends General {
         String fecha = fecha_busqueda.getValue().toString();
         actualizarTablaEjer(cliente.getDni(), fecha);
         actualizatTablaPro(cliente.getDni(),fecha);
+        float calorias=0;
+        float grasas=0;
+        float grasas_SATU=0;
+        float hidratos=0;
+        float azzucar=0;
+        float proteinbas=0;
+        float fibra=0;
+        float sodio=0;
+        if(!data_pro.isEmpty()){
+            for(Producto pe:data_pro){
+                calorias+=pe.getCalorias();
+                grasas+=pe.getGrasas();
+                grasas_SATU+=pe.getGrasas_saturadas();
+                hidratos+=pe.getHidratos();
+                azzucar+=pe.getAzucaar();
+                proteinbas+=pe.getProteinas();
+                fibra+=pe.getFibra();
+                sodio+=pe.getSodio();
+            }
+        }
+        calorias_tot.setText(Float.toString(calorias));
+        gras_tot.setText(Float.toString(grasas));
+        grassasa_tot.setText(Float.toString(grasas_SATU));
+        hidrat_tot.setText(Float.toString(hidratos));
+        azucar_tot.setText(Float.toString(azzucar));
+        sodio_tot.setText(Float.toString(sodio));
+        proteinas_tot.setText(Float.toString(proteinbas));
+        fibra_tot.setText(Float.toString(fibra));
+        
 
     }
 
@@ -251,6 +299,18 @@ public class ControladorLobby extends General {
                 ApoyoClientes.setFecha_consulta(fecha_busqueda.getValue());
             }
             App.setRoot(Escenas.MODIFICARDIETA.getUrl());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorLobby.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    private void ModificarRutina(ActionEvent event){
+        try {
+            if(fecha_busqueda!=null&&fecha_busqueda.getValue()!=null){
+                ApoyoClientes.setFecha_consulta(fecha_busqueda.getValue());
+            }
+            App.setRoot(Escenas.MODIFICARRUTINA.getUrl());
         } catch (IOException ex) {
             Logger.getLogger(ControladorLobby.class.getName()).log(Level.SEVERE, null, ex);
         }

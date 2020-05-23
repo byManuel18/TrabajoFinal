@@ -15,10 +15,13 @@ import com.mycompany.proyectofinal.models.Cliente;
 import com.mycompany.proyectofinal.models.Ejercicio;
 import com.mycompany.proyectofinal.models.Producto;
 import com.mycompany.proyectofinal.utils.ConexionUtilidades;
+import java.io.ByteArrayInputStream;
+import java.sql.Blob;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import javafx.scene.image.Image;
 
 
 /**
@@ -28,8 +31,12 @@ import java.util.List;
 public class Prueba {
 
     public static void main(String[] args) {
-        List<Producto> er=ProductoDAO.ListarDietaDia("20225097R","2020-05-22");
-        System.out.println(er);
+        ClientesDAO n=new ClientesDAO("20225097R");
+        byte[] c=n.getFoto();
+        System.out.println(c);
+        Image i = new Image(new ByteArrayInputStream(c));
+        System.out.println(i.getProgress());
         ConexionUtilidades.cerrarConec();
+                
     }
 }

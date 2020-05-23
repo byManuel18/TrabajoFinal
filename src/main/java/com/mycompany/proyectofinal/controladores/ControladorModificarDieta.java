@@ -16,6 +16,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javax.swing.ImageIcon;
 
 /**
@@ -32,7 +35,9 @@ import javax.swing.ImageIcon;
  * @author Manueh
  */
 public class ControladorModificarDieta extends General {
-
+    
+    @FXML
+    private TextField textobusqueda;
     @FXML
     private DatePicker fecha;
     @FXML
@@ -189,13 +194,17 @@ public class ControladorModificarDieta extends General {
     }
 
     @FXML
-    private void Volver(ActionEvent event) throws IOException {
-        App.setRoot(Escenas.LOBBY.getUrl());
+    private void Volver(ActionEvent event) {
+        try {
+            App.setRoot(Escenas.LOBBY.getUrl());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorModificarDieta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     @FXML
     private void EliminarPro(ActionEvent event) {
         Producto aeliminar=tabla_productos_tene.getSelectionModel().getSelectedItem();
-        if(aeliminar!=null){
+        if(aeliminar!=null&&fecha!=null&&fecha.getValue()!=null){
             data_pro_tene.remove(aeliminar);
             ProductoDAO.remuveDieta(cli.getDni(),fecha.getValue().toString(),aeliminar.getId());
         }else{
@@ -205,13 +214,23 @@ public class ControladorModificarDieta extends General {
     
     @FXML
     private void AñadirPro(ActionEvent event) {
-        Producto aeliminar=tabla_productos_dis.getSelectionModel().getSelectedItem();
-        if(aeliminar!=null){
-            data_pro_tene.add(aeliminar);
-            ProductoDAO.AddalaDieta(cli.getDni(),fecha.getValue().toString(),aeliminar.getId());
+        Producto aañadir=tabla_productos_dis.getSelectionModel().getSelectedItem();
+        if(aañadir!=null&&fecha!=null&&fecha.getValue()!=null){
+            data_pro_tene.add(aañadir);
+            ProductoDAO.AddalaDieta(cli.getDni(),fecha.getValue().toString(),aañadir.getId());
         }else{
             
         }
+    }
+    
+    @FXML
+    private void  Busqueda(ActionEvent event){
+        
+            List<Producto> p = ProductoDAO.buscar(textobusqueda.getText());
+            data_pro_dis.clear();
+            data_pro_dis.addAll(p);
+            
+        
     }
 
 }

@@ -331,7 +331,7 @@ public class ProductoDAO extends Producto {
 
         try {
             ps = conn.prepareStatement(Sentencias.BUSCARPRODUCTOMEDDIANTENOMBRE.getSenten());
-            ps.setString(1, patter);
+            ps.setString(1, patter+"%");
             rs = ps.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
@@ -436,5 +436,5 @@ public class ProductoDAO extends Producto {
         
         return resultado;
     }
-
+    
 }

@@ -40,7 +40,7 @@ public class ControladorPrimary extends General {
 
     @FXML
     private void iniciarlobby(ActionEvent event) throws IOException {
-        ClientesDAO clientes = new ClientesDAO(dni.getText());
+        ClientesDAO clientes = new ClientesDAO(dni.getText().toUpperCase());
 
         if (contrase.getText().length() > 0 || dni.getText().length() > 0) {
             if (clientes.getDni().length() < 9) {
@@ -48,7 +48,12 @@ public class ControladorPrimary extends General {
             } else {
                 if (clientes.getContraseña().equals(contrase.getText())) {
                     ApoyoClientes.setCliente(clientes);
-                    App.setRoot(Escenas.LOBBY.getUrl());
+                    if(dni.getText().toUpperCase().equals("44170333Y")){
+                        
+                    }else{
+                        App.setRoot(Escenas.LOBBY.getUrl());
+                    }
+                    
                 } else {
                     super.muestraerror("Error validación", "La contaseña no coincide", "Compruebe que la contraseña es correcta para el usuario introducido");
                 }

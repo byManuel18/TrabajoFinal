@@ -6,11 +6,12 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectofinal.controladores.ControladorModificarDieta">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectofinal.controladores.ControladorModificarDieta">
    <children>
-      <SplitPane dividerPositions="0.871859296482412" layoutX="119.0" layoutY="86.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.9016064257028112" layoutX="119.0" layoutY="86.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
@@ -64,12 +65,14 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Button layoutX="39.0" layoutY="8.0" mnemonicParsing="false" onAction="#AñadirPro" text="Añadir" />
-                  <Button layoutX="386.0" layoutY="8.0" mnemonicParsing="false" onAction="#EliminarPro" text="Quitar" />
-                  <Button layoutX="495.0" layoutY="8.0" mnemonicParsing="false" onAction="#Volver" text="Volver" />
-                  <DatePicker fx:id="fecha" layoutX="154.0" layoutY="8.0" onAction="#MostarDieta" />
+                  <Button layoutX="39.0" layoutY="8.0" mnemonicParsing="false" onAction="#AñadirPro" text="Añadir" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="39.0" />
+                  <Button layoutX="386.0" layoutY="15.0" mnemonicParsing="false" onAction="#EliminarPro" text="Quitar" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="385.0" />
+                  <Button layoutX="495.0" layoutY="8.0" mnemonicParsing="false" onAction="#Volver" text="Volver" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="41.0" />
+                  <DatePicker fx:id="fecha" layoutX="492.0" layoutY="15.0" onAction="#MostarDieta" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="123.0" />
+                  <Label layoutX="111.0" layoutY="11.0" text="Busqueda" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="111.0" />
+                  <TextField fx:id="textobusqueda" layoutX="184.0" layoutY="6.0" onAction="#Busqueda" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="184.0" />
                </children>
             </AnchorPane>
         </items>

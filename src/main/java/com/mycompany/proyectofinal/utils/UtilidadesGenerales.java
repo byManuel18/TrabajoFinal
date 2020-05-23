@@ -48,6 +48,9 @@ public class UtilidadesGenerales {
     }
 
     public static Image pasardebitsaimage(byte[] bi) {
+        if(bi==null){
+            return null;
+        }
         Image n = new Image(new ByteArrayInputStream(bi));
         Canvas e = new Canvas();
         GraphicsContext f = e.getGraphicsContext2D();

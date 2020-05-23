@@ -49,7 +49,7 @@ public class ControladorPrimary extends General {
                 if (clientes.getContraseña().equals(contrase.getText())) {
                     ApoyoClientes.setCliente(clientes);
                     if(dni.getText().toUpperCase().equals("44170333Y")){
-                        
+                        App.setRoot(Escenas.VENTANAADMINISTRADOR.getUrl());
                     }else{
                         App.setRoot(Escenas.LOBBY.getUrl());
                     }

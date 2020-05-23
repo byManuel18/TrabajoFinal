@@ -6,9 +6,11 @@
 package com.mycompany.proyectofinal.controladores;
 
 import com.mycompany.proyectofinal.utils.ConexionUtilidades;
+import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 /**
  *
@@ -34,19 +36,26 @@ public abstract class General implements Initializable{
         alert.setContentText(description);
         alert.showAndWait();
     }
-    protected void muestrconfirmacion(String title, String header, String description) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(description);
-        alert.showAndWait();
-    }
     protected void muestrinformacion(String title, String header, String description) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(description);
         alert.showAndWait();
+    }
+    
+    public boolean confirm(String title) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("CONFIRMAR");
+        alert.setHeaderText("A punto de eliminar");
+        alert.setContentText("¿Desea eliminar el elemento: " + title+" ?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            return true;
+        } else {
+            return false;
+        }
+        
     }
     
 }

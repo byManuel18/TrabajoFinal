@@ -182,7 +182,7 @@ public class ProductoDAO extends Producto {
         }
     }
 
-    private int save() {
+    public int save() {
         int resultado = -1;
         Connection conn = ConexionUtilidades.getConntion();
         PreparedStatement ps = null;
@@ -199,7 +199,11 @@ public class ProductoDAO extends Producto {
                 ps.setFloat(8, proteinas);
                 ps.setFloat(9, fibra);
                 ps.setFloat(10, sodio);
-                ps.setBytes(11, foto);
+                if(foto!=null){
+                    ps.setBytes(11, foto);
+                }else{
+                    ps.setBytes(11, new byte[1]);
+                }
                 ps.setInt(12, id);
                 resultado=ps.executeUpdate();
 
@@ -226,7 +230,12 @@ public class ProductoDAO extends Producto {
                 ps.setFloat(8, proteinas);
                 ps.setFloat(9, fibra);
                 ps.setFloat(10, sodio);
-                ps.setBytes(11, foto);
+                if(foto!=null){
+                    ps.setBytes(11, foto);
+                }else{
+                    ps.setBytes(11, new byte[1]);
+                }
+                
                 resultado=ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(ProductoDAO.class.getName()).log(Level.SEVERE, null, ex);

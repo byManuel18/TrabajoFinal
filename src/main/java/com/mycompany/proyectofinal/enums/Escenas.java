@@ -16,6 +16,8 @@ public enum Escenas {
     LOBBY("view/lobby"),
     MODIFICARDIETA("view/ADDProductosaDieta"),
     MODIFICARRUTINA("view/AddEjerRutina"),
+    VENTANAADMINISTRADOR("view/VentanaAdmin"),
+    EDITARPERFIL("view/EditarPerfil"),
     ;
 
     private String url;

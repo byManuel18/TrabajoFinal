@@ -62,7 +62,7 @@
                                  </children>
                               </GridPane>
                               <ImageView fx:id="img" fitHeight="116.0" fitWidth="150.0" layoutX="84.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="35.0" />
-                              <Button layoutX="104.0" layoutY="346.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="105.0" text="Editar Perfil" AnchorPane.bottomAnchor="21.0" />
+                              <Button layoutX="104.0" layoutY="346.0" mnemonicParsing="false" onAction="#Editarperfil" prefHeight="31.0" prefWidth="105.0" text="Editar Perfil" AnchorPane.bottomAnchor="21.0" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="315.0" prefWidth="313.0">

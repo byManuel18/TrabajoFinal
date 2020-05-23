@@ -26,15 +26,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -87,7 +84,7 @@ public class ControladorLobby extends General {
     @FXML
     private TableColumn<Ejercicio, String> descr_ejer;
     @FXML
-    private TableColumn<Ejercicio, ImageIcon> foto_ejer;
+    private TableColumn<Ejercicio, ImageView> foto_ejer;
     @FXML
     private TableColumn<Ejercicio, String> grupomusc_ejer;
     @FXML
@@ -101,7 +98,7 @@ public class ControladorLobby extends General {
     @FXML
     private TableColumn<Producto, String> marca_pro;
     @FXML
-    private TableColumn<Producto, ImageIcon> foto_pro;
+    private TableColumn<Producto, ImageView> foto_pro;
     @FXML
     private TableColumn<Producto, Float> calorias_pro;
     @FXML
@@ -218,11 +215,11 @@ public class ControladorLobby extends General {
             this.nombre_ejer.setCellValueFactory(eachRowData -> {
                 return new SimpleObjectProperty<>(eachRowData.getValue().getNombre());
             });
-            /*this.foto_ejer.setCellValueFactory(eachRowData ->{
+            this.foto_ejer.setCellValueFactory(eachRowData ->{
                       byte[] bit=eachRowData.getValue().getFoto();
-                     ImageIcon imagennu=UtilidadesGenerales.pasardebitsaimageImageIcon(bit);
-                    return new SimpleObjectProperty<>(imagennu);
-                     });*/
+                     ImageView fotonu=new ImageView(UtilidadesGenerales.pasardebitsaimage(bit));
+                    return new SimpleObjectProperty<>(fotonu);
+             });
             this.descr_ejer.setCellValueFactory(eachRowData -> {
                 return new SimpleObjectProperty<>(eachRowData.getValue().getDescripcion());
             });
@@ -279,11 +276,11 @@ public class ControladorLobby extends General {
             this.hidratos_pro.setCellValueFactory(eachRowData -> {
                 return new SimpleObjectProperty<>(eachRowData.getValue().getHidratos());
             });
-            /*this.foto_pro.setCellValueFactory(eachRowData -> {
+            this.foto_pro.setCellValueFactory(eachRowData -> {
                 byte[] bit = eachRowData.getValue().getFoto();
-                ImageIcon imagennu = UtilidadesGenerales.pasardebitsaimageImageIcon(bit);
-                return new SimpleObjectProperty<>(imagennu);
-            });*/
+                ImageView nuw=new ImageView(UtilidadesGenerales.pasardebitsaimage(bit));
+                return new SimpleObjectProperty<>(nuw);
+            });
         } else {
             for (int i = 0; i < tabla_productos.getItems().size(); i++) {
                 tabla_productos.getItems().clear();
@@ -313,6 +310,15 @@ public class ControladorLobby extends General {
             App.setRoot(Escenas.MODIFICARRUTINA.getUrl());
         } catch (IOException ex) {
             Logger.getLogger(ControladorLobby.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    private void Editarperfil(ActionEvent event){
+        try {
+            App.setRoot(Escenas.EDITARPERFIL.getUrl());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

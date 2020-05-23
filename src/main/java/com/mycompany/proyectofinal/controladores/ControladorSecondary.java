@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -68,8 +70,12 @@ public class ControladorSecondary extends General{
     }
 
     @FXML
-    private void Volver(ActionEvent event) throws IOException {
-        App.setRoot(Escenas.PRIMARY.getUrl());
+    private void Volver(ActionEvent event){
+        try {
+            App.setRoot(Escenas.PRIMARY.getUrl());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

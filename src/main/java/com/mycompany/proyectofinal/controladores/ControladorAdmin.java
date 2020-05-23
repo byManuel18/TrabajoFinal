@@ -505,5 +505,22 @@ public class ControladorAdmin extends General {
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    @FXML
+    private void AñadirEjer(ActionEvent event){
+        try {
+            App.setRoot(Escenas.AÑADIREJER.getUrl());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @FXML
+    private void AñadirPro(ActionEvent event){
+        try {
+            App.setRoot(Escenas.AÑADIRPRO.getUrl());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
 }

@@ -18,6 +18,8 @@ public enum Escenas {
     MODIFICARRUTINA("view/AddEjerRutina"),
     VENTANAADMINISTRADOR("view/VentanaAdmin"),
     EDITARPERFIL("view/EditarPerfil"),
+    AÑADIREJER("view/AnadirEjer"),
+    AÑADIRPRO("view/AnadirProducto"),
     ;
 
     private String url;

@@ -175,9 +175,13 @@ public class EjerciciosDAO extends Ejercicio {
             }
         } else {
             try {
-                ps = conn.prepareStatement(Sentencias.INSERTPRODUCTO.getSenten());
+                ps = conn.prepareStatement(Sentencias.INSERTEJERCICIO.getSenten());
                 ps.setString(1, descripcion);
-                ps.setBytes(2, foto);
+                if(foto==null){
+                     ps.setBytes(2,new byte[1]);
+                }else{
+                    ps.setBytes(2, foto);
+                }
                 ps.setString(3, musculo.toString());
                 ps.setInt(4, series);
                 ps.setInt(5, repeticiones);

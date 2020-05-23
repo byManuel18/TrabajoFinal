@@ -321,5 +321,13 @@ public class ControladorLobby extends General {
             Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    @FXML
+    private void CerrarCesion(ActionEvent event){
+        try {
+            App.setRoot(Escenas.PRIMARY.getUrl());
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorSecondary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

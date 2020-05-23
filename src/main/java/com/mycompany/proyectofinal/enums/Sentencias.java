@@ -23,7 +23,7 @@ public enum Sentencias {
     UPDATEPRODUCTO("UPDATE product SET nombre= ?, marca= ?,calorias= ?,Grasa_Total= ?,Grasas_Saturadas= ?, hidratos= ?,azucar= ?,proteina= ?,fibra= ?,sodio= ?,foto=? WHERE id= ?"),
     INSERTPRODUCTO("INSERT INTO product (nombre,marca,calorias,Grasa_Total,Grasas_Saturadas,hidratos,azucar,proteina,fibra,sodio,id,foto) VALUES(?,?,?,?,?,?,?,?,?,?,NULL,?)"),
     SELECTEJERCICIOCONCRETO("SELECT * FROM ejercicio WHERE id=?"),
-    INSERTEJERCICIO("INSERT INTO ejercicio (Descripcion,Foto_Ejer,Grupo_Muscular,Series,Repeticiones,Id,name) VALUES(?,?,?,?,?,NULL,?"),
+    INSERTEJERCICIO("INSERT INTO ejercicio (Descripcion,Foto_Ejer,Grupo_Muscular,Series,Repeticiones,Id,name) VALUES(?,?,?,?,?,NULL,?)"),
     UPDATEEJERCICIO("UPDATE ejercicio SET Descripcion= ?, Foto_Ejer= ?,Grupo_Muscular= ?,Series= ?,Repeticiones= ?,name= ? WHERE id= ?"),
     DELETEEJERCICIO("DELETE FROM ejercicio WHERE id=?"),
     SELECTALLEJERCICIOS("SELECT * FROM ejercicio"),

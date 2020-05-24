@@ -36,7 +36,7 @@ public class UtilidadesGenerales {
      */
     public static byte[] pasarimagenabites(Image img) {
         byte[] bits = null;
-        if (img != null) {
+        if (img != null&&img.getUrl()!=null) {
             String ruta = img.getUrl().substring(5);
             BufferedImage bfi = null;
             try {
@@ -50,6 +50,8 @@ public class UtilidadesGenerales {
         }
         return bits;
     }
+    
+   
     /**
      * Pasa un array de bits a image
      * @param bi array a transformar

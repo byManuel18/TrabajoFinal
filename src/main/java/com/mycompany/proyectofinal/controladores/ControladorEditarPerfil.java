@@ -120,7 +120,7 @@ public class ControladorEditarPerfil extends General {
     @FXML
     private void Guardar(){
         ClientesDAO guar= new ClientesDAO(clie);
-        if(img!=null&&img.getImage()!=null){
+        if(img!=null&&img.getImage()!=null&&img.getImage().getUrl()!=null){
             guar.setFoto(UtilidadesGenerales.pasarimagenabites(img.getImage()));
         }
         if(nombre!=null&&nombre.getText().length()>0){
